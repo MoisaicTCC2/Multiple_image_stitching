@@ -11,14 +11,14 @@ class matchers:
 
 		#using ORB instead of SURF to speed up the process
 		# and using Brute Force Matcher instead of FLANN. The latter works only with SURF or SIFT and BF is faster and accurate for this
-		self.orb = cv2.ORB()
+		self.orb = cv2.ORB_create()
 
 		self.bf = cv2.BFMatcher()
 	
 	def match(self, i1, i2, direction=None):
 		imageSet1 = self.getFeatures(i1)
 		imageSet2 = self.getFeatures(i2)
-		print "Direction : ", direction
+		print("Direction : ", direction)
 		matches = self.bf.knnMatch(
 			imageSet2['des'],
 			imageSet1['des'],
